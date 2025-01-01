@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./styles.css" />
+        <!-- Adds the tab icon. -->
+        <link rel="icon" href="./public/icons/moneyIcon.png" />
+        <title>My Expenses</title>
+    </head>
+    <body>
+        <div class="flex-container show" id="overview-container">
+            <div class="three-board-container">
+                <div class="add-expenses-container board-elem" id="board-1">
+                    <button class="main-button" id="open-category-btn">Add category</button>
+                    <button class="main-button" id="open-expenses-btn" disabled>Add expense</button>
+                </div>
+                <div class="list-expenses-container board-elem" id="board-2">
+                    <span class="board-heading">My Expenses</span>
+                </div>
+                <div class="chart-expenses-container board-elem" id="board-3">
+                    <span class="board-heading">Visualization</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex-container" id="add-cat-container">
+            <div class="centered">
+                <span class="board-heading"> Add Category </span>
+                <input class="main-input" id="new-category-name" type="text" placeholder="Name your category..." />
+                <button class="main-button" id="add-category-btn">Add</button>
+                <p class="muted">This is an info text for adding categories, describing what categories are.</p>
+            </div>
+        </div>
+        <div class="flex-container" id="add-exp-container">
+            <div class="centered">
+                <span class="board-heading"> Add Expense </span>
+                <input type="text" class="main-input" id="new-expense-name" placeholder="Name your expense..." />
+                <select class="main-input">
+                    <!-- Options are the categories -->
+                    <option value="default">MyCategories</option>
+                </select>
+                <input class="main-input" type="number" id="new-expense-value">
+                <button class="main-button" id="add-expenses-btn">Add</button>
+                <p class="muted">
+                    Info text for adding expenses.
+                </p>
+            </div>
+        </div>
+        <script src="./index.js"></script>
+    </body>
+</html>

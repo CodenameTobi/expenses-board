@@ -1,0 +1,103 @@
+:root {
+    --main-text-color: #ffffff;
+    --muted-text-color: #d1d1d1;
+
+    --main-bg-color: #141414;
+    --muted-main-bg-color: rgba(0, 0, 0, 0.6);
+    --secondary-bg-color: rgb(47, 3, 105);
+    --muted-secondary-bg-color: rgba(47, 3, 105, 0.6);
+
+    --main-accent: rgb(71, 185, 157);
+}
+
+body {
+    color: var(--main-text-color);
+    background-color: var(--main-bg-color);
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.muted {
+    color: var(--muted-text-color);
+}
+.centered {
+    text-align: center;
+}
+.flex-container {
+    height: 100vh;
+    width: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.flex-container.show {
+    display: flex;
+}
+
+.three-board-container {
+    max-width: 1200px;
+    max-height: 80vh;
+    display: grid;
+    grid-template-areas:
+        "myadd mychart"
+        "mylist mychart";
+
+    grid-template-rows: 1fr 3fr;
+    grid-template-columns: 2fr 3fr;
+}
+.board-elem {
+    margin: 10px;
+    padding: 10px;
+    border: solid 1px var(--main-accent);
+}
+.board-heading {
+    /* color: var(--main-accent); */
+    font-size: 1.2em;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 7px;
+}
+.add-expenses-container {
+    grid-area: myadd;
+}
+
+.list-expenses-container {
+    grid-area: mylist;
+}
+
+.chart-expenses-container {
+    grid-area: mychart;
+}
+
+.main-button {
+    color: var(--main-text-color);
+    background-color: var(--secondary-bg-color);
+    margin: 5px 0;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: none;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, background-image 3s ease, box-shadow 0.1s ease;
+}
+.main-button:not(:disabled):hover {
+    color: var(--main-text-color);
+    background-image: linear-gradient(to right, var(--secondary-bg-color), var(--main-accent));
+}
+.main-button:not(:disabled):active {
+    box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.4);
+}
+.main-button:disabled {
+    color: var(--muted-text-color);
+    background-color: var(--muted-secondary-bg-color);
+}
+.main-button + .main-button {
+    margin-left: 10px;
+}
+.main-input {
+    padding: 10px 14px;
+    margin-right: 10px;
+    font-size: 1.1em;
+    border-radius: 4px;
+    border: none;
+}
+
