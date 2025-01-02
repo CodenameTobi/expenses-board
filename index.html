@@ -12,41 +12,28 @@
         <div class="flex-container show" id="overview-container">
             <div class="three-board-container">
                 <div class="add-expenses-container board-elem" id="board-1">
-                    <button class="main-button" id="open-category-btn">Add category</button>
-                    <button class="main-button" id="open-expenses-btn" disabled>Add expense</button>
+                    <span class="board-heading">Add expense</span>
+                    <div>
+                        <!-- Add labels above each input. -->
+                        <input type="text" class="main-input" id="new-expense-name" placeholder="Name your expense..." />
+                        <input class="main-input" type="number" id="new-expense-value" min="0" />
+                        <button class="main-button" id="add-expenses-btn">Add</button>
+                    </div>
                 </div>
                 <div class="list-expenses-container board-elem" id="board-2">
                     <span class="board-heading">My Expenses</span>
+                    <div class="expense-list" id="expenses-list">
+                    
+                    </div>
                 </div>
                 <div class="chart-expenses-container board-elem" id="board-3">
                     <span class="board-heading">Visualization</span>
+                    TODO: Add select for different chart types.
+                    <canvas class="chart-container" id="myChart"></canvas>
                 </div>
             </div>
         </div>
-
-        <div class="flex-container" id="add-cat-container">
-            <div class="centered">
-                <span class="board-heading"> Add Category </span>
-                <input class="main-input" id="new-category-name" type="text" placeholder="Name your category..." />
-                <button class="main-button" id="add-category-btn">Add</button>
-                <p class="muted">This is an info text for adding categories, describing what categories are.</p>
-            </div>
-        </div>
-        <div class="flex-container" id="add-exp-container">
-            <div class="centered">
-                <span class="board-heading"> Add Expense </span>
-                <input type="text" class="main-input" id="new-expense-name" placeholder="Name your expense..." />
-                <select class="main-input">
-                    <!-- Options are the categories -->
-                    <option value="default">MyCategories</option>
-                </select>
-                <input class="main-input" type="number" id="new-expense-value">
-                <button class="main-button" id="add-expenses-btn">Add</button>
-                <p class="muted">
-                    Info text for adding expenses.
-                </p>
-            </div>
-        </div>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script src="./index.js"></script>
     </body>
 </html>

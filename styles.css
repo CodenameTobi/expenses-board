@@ -3,11 +3,14 @@
     --muted-text-color: #d1d1d1;
 
     --main-bg-color: #141414;
-    --muted-main-bg-color: rgba(0, 0, 0, 0.6);
+    --muted-main-bg-color: #222222;
     --secondary-bg-color: rgb(47, 3, 105);
     --muted-secondary-bg-color: rgba(47, 3, 105, 0.6);
 
     --main-accent: rgb(71, 185, 157);
+    --main-accent-light: rgba(71, 185, 157, 0.3);
+    --secondary-accent: rgb(218, 141, 0);
+    --secondary-accent-light: rgba(218, 141, 0, 0.3);
 }
 
 body {
@@ -23,7 +26,7 @@ body {
     text-align: center;
 }
 .flex-container {
-    height: 100vh;
+    /* height: 100vh; */
     width: 100%;
     display: none;
     justify-content: center;
@@ -34,30 +37,47 @@ body {
 }
 
 .three-board-container {
-    max-width: 1200px;
-    max-height: 80vh;
+    width: 70vw;
+    max-width: 1300px;
     display: grid;
     grid-template-areas:
-        "myadd mychart"
+        "myadd myadd"
+        "mylist mychart"
         "mylist mychart";
-
-    grid-template-rows: 1fr 3fr;
+    grid-template-rows: fit-content 3fr;
     grid-template-columns: 2fr 3fr;
+}
+
+@media screen and (max-width: 900px) {
+    .three-board-container {
+        max-width: 90vw;
+        grid-template-areas:
+            "myadd"
+            "mylist"
+            "mychart";
+        grid-template-rows: 1fr 3fr 3fr;
+        grid-template-columns: 1fr;
+    }
 }
 .board-elem {
     margin: 10px;
-    padding: 10px;
-    border: solid 1px var(--main-accent);
+    border-radius: 10px;
+    background-color: var(--muted-main-bg-color);
+    box-shadow: 0 0 5px 5px var(--main-accent);
 }
 .board-heading {
-    /* color: var(--main-accent); */
+    color: var(--secondary-accent);
     font-size: 1.2em;
     font-weight: bold;
     display: block;
     margin-bottom: 7px;
 }
+.list-expenses-container .board-heading {
+    padding: 10px;
+}
 .add-expenses-container {
     grid-area: myadd;
+    padding: 10px;
 }
 
 .list-expenses-container {
@@ -65,6 +85,7 @@ body {
 }
 
 .chart-expenses-container {
+    padding: 10px;
     grid-area: mychart;
 }
 
@@ -90,14 +111,36 @@ body {
     color: var(--muted-text-color);
     background-color: var(--muted-secondary-bg-color);
 }
-.main-button + .main-button {
-    margin-left: 10px;
-}
+
 .main-input {
     padding: 10px 14px;
     margin-right: 10px;
+    margin-top: 10px;
     font-size: 1.1em;
     border-radius: 4px;
     border: none;
 }
+input[type="number"].main-input {
+    width: 80px;
+}
 
+.expense-list {
+}
+
+.expense-item {
+    padding: 10px 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.expense-list .expense-item:nth-child(odd) {
+    background-color: var(--main-accent-light);
+}
+
+.expense-item .expense-name, .expense-item .expense-value {
+    font-weight: bold;
+}
+/* 
+.expense-item.fill {
+    background-color: var(--main-accent-light);
+} */
