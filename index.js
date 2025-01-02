@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const expensesList = document.getElementById('expenses-list');
     const expenseNameInput = document.getElementById('new-expense-name');
     const expenseAmountInput = document.getElementById('new-expense-value');
+    const totalExpensesAmount = document.getElementById('total-expenses-amount')
     const ctx = document.getElementById('myChart');
     let myChart; // Declare a variable to hold the chart instance.
 
@@ -30,7 +31,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
         const expense = new Expense(name, amount);
         expenses.push(expense);
-
+        // Add list entry.
         const newExpenseItem = document.createElement('div');
         newExpenseItem.className = 'expense-item';
         newExpenseItem.innerHTML = `
@@ -38,6 +39,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
             <span class="expense-value">${amount} €</span>
         `;
         expensesList.appendChild(newExpenseItem);
+        // Update total expenses amount.
+        const totalAmount = expenses.reduce((total, expense) => total + parseFloat(expense.amount), 0);
+        totalExpensesAmount.textContent = totalAmount + ' €';
+        // Update chart and clear inputs.
         updateChart(expenses);
         clearInputs();
     }
